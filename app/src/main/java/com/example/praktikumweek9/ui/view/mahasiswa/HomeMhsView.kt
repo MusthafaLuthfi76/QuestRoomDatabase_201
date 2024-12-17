@@ -41,6 +41,7 @@ import com.example.praktikumweek9.ui.viewmodel.HomeMhsViewModel
 import com.example.praktikumweek9.ui.viewmodel.HomeUiState
 import com.example.praktikumweek9.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.getValue
 
 @Composable
 fun HomeMhsView(
