@@ -1,5 +1,6 @@
 package com.example.praktikumweek9.ui.view.mahasiswa
 
+import android.R.id.message
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -38,20 +39,23 @@ fun UpdateMhsView(
 
     //Observasi perubahan snackBarMessage
     LaunchedEffect(uiState.snackBarMessage) {
-        println("Snackbar message received: $message")
-        coroutineScope.launch{
-            println("Launching coroutine for snackbar")
-            snackbarHostState.showSnackbar(
-                message = message,
-                duration = SnackbarDuration.Long
-            )
-            viewModel.resetSnackBarMessage()
+        println("LaunchedEffect triggered")
+        uiState.snackBarMessage?.let {message ->
+            println("Snackbar message received: $message")
+            coroutineScope.launch{
+                println("Launching coroutine for snackbar")
+                snackbarHostState.showSnackbar(
+                    message = message,
+                    duration = SnackbarDuration.Long
+                )
+                viewModel.resetSnackBarMessage()
+            }
         }
     }
 
     Scaffold (
         modifier = modifier,
-        snackbarHost = { SnackbarHost((hostState = snackbarHostState)) }, // Tempatkan snackbar di scaffold
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }, // Tempatkan snackbar di scaffold
         topBar = {
             customTopAppBar(
                 judul = "Edit Mahasiswa",
@@ -85,7 +89,7 @@ fun UpdateMhsView(
                         }
                     }
                 }
-            ) { }
+            )
         }
     }
 }
