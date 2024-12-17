@@ -4,8 +4,11 @@ import androidx.compose.runtime.State
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.praktikumweek9.data.entity.Mahasiswa
 import com.example.praktikumweek9.repository.RepositoryMhs
+import com.example.praktikumweek9.ui.navigation.DestinasiDetail
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filterNotNull
@@ -52,9 +55,9 @@ class DetailMhsViewModel(
         )
     fun deleteMhs(){
         detailUiState.value.detailUiEvent.toMahasiswaEntity().let {
-            viewModelScope.launch(
+            viewModelScope.launch {
                 repositoryMhs.deleteMhs(it)
-            )
+            }
         }
     }
 }
