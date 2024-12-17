@@ -38,7 +38,7 @@ fun UpdateMhsView(
     val coroutineScope = rememberCoroutineScope()
 
     //Observasi perubahan snackBarMessage
-    LaunchedEffect(uiState.snackBarMessage) {
+    LaunchedEffect (uiState.snackBarMessage) {
         println("LaunchedEffect triggered")
         uiState.snackBarMessage?.let {message ->
             println("Snackbar message received: $message")

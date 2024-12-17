@@ -10,6 +10,8 @@ import com.example.praktikumweek9.ui.navigation.DestinasiUpdate
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 class UpdateMhsViewModel(
     savedStateHandle: SavedStateHandle,
@@ -19,7 +21,7 @@ class UpdateMhsViewModel(
     var updateUIState by mutableStateOf(MhsUIState())
         private set
 
-    private val _nim: String = checkNotNull(savedStateHandle[DestinasiEdit.NIM])
+    private val _nim: String = checkNotNull(savedStateHandle[DestinasiUpdate.NIM])
 
     init {
         viewModelScope.launch {
@@ -63,7 +65,7 @@ class UpdateMhsViewModel(
                         mahasiswaEvent = MahasiswaEvent(),
                         isEntryValid = FormErrorState()
                     )
-                    println("snackBarMessage diatur: ${updateUIState, snackBarMessage}")
+                    println("snackBarMessage diatur: ${updateUIState.snackBarMessage}")
                 }
                 catch (e: Exception){
                     updateUIState = updateUIState.copy(
