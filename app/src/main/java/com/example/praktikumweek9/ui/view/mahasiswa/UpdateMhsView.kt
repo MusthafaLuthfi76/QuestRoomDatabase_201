@@ -57,6 +57,7 @@ fun UpdateMhsView(
                 judul = "Edit Mahasiswa",
                 showBackButton = true,
                 onBack = onBack,
+                modifier = modifier
             )
         }
     ) {padding ->
